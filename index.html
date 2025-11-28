@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="EcoFuturo - Restaurando el futuro, un árbol a la vez. Líderes en reforestación en Latinoamérica."
+    />
+    <title>EcoFuturo | Restaurando el Futuro</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="preloader">
+      <div class="loader-icon"><i class="fas fa-leaf"></i></div>
+      <h2 style="margin-top: 20px; color: var(--primary-green)">EcoFuturo</h2>
+    </div>
+
+    <header>
+      <div class="container">
+        <nav>
+          <div class="logo"><i class="fas fa-tree"></i> EcoFuturo</div>
+          <div class="hamburger" id="hamburger">
+            <i class="fas fa-bars"></i>
+          </div>
+          <ul class="nav-links" id="nav-links">
+            <li><a href="#hero">Inicio</a></li>
+            <li><a href="#projects">Proyectos</a></li>
+            <li><a href="#involve">Involúcrate</a></li>
+            <li><a href="#contact">Contacto</a></li>
+          </ul>
+          <button
+            id="theme-toggle"
+            class="theme-toggle"
+            aria-label="Cambiar modo oscuro"
+          >
+            <i class="fas fa-moon"></i>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section id="hero" class="hero">
+        <div class="hero-bg">
+          <picture>
+            <source
+              srcset="
+                https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80
+              "
+              media="(max-width: 600px)"
+            />
+            <img
+              src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
+              alt="Fotografía panorámica y cinematográfica de un bosque nativo regenerándose bajo una luz cálida y esperanzadora, con árboles altos y follaje verde vibrante que sugiere vida y futuro."
+            />
+          </picture>
+        </div>
+
+        <div class="particles" id="particles-container"></div>
+
+        <div class="hero-content reveal">
+          <h1>
+            Restaurando el futuro, <br /><span
+              id="typewriter"
+              style="color: var(--secondary-green)"
+            ></span>
+          </h1>
+          <p>
+            Líderes en restauración de bosques en Latinoamérica para el 2035.
+          </p>
+          <a href="#projects" class="btn btn-primary"
+            >Ver Proyectos <i class="fas fa-arrow-right"></i
+          ></a>
+        </div>
+      </section>
+
+      <div class="stats-bar">
+        <div class="container stats-container">
+          <div class="stat-item">
+            <h3 id="tree-counter">0</h3>
+            <p>Árboles Plantados</p>
+          </div>
+          <div class="stat-item">
+            <h3>15+</h3>
+            <p>Proyectos Activos</p>
+          </div>
+          <div class="stat-item">
+            <h3>4 Paises</h3>
+            <p>Impactados</p>
+          </div>
+        </div>
+      </div>
+
+      <section id="projects" class="section">
+        <div class="container">
+          <div class="section-header reveal">
+            <h2>Nuestros Proyectos</h2>
+            <p>Iniciativas activas de reforestación</p>
+          </div>
+
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Buscar proyecto..."
+            aria-label="Buscar proyectos"
+          />
+
+          <div class="controls reveal">
+            <button class="filter-btn active" data-filter="all">Todos</button>
+            <button class="filter-btn" data-filter="selva">Selva</button>
+            <button class="filter-btn" data-filter="urbano">Urbano</button>
+          </div>
+
+          <div class="projects-grid" id="projects-container"></div>
+        </div>
+      </section>
+
+      <section id="involve" class="section involve-section">
+        <div class="container involve-grid">
+          <div class="involve-content reveal">
+            <h2>Involúcrate Hoy</h2>
+            <p>
+              Tu aporte hace la diferencia. Usa nuestra calculadora interactiva
+              para visualizar el impacto real de tu donación en el medio
+              ambiente.
+            </p>
+
+            <div style="display: flex; gap: 15px; align-items: center">
+              <i
+                class="fas fa-heart"
+                style="font-size: 2rem; color: var(--secondary-green)"
+              ></i>
+              <div>
+                <h4>Dona árboles</h4>
+                <small>Cada aporte cuenta.</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="calculator-card reveal">
+            <div class="calc-header">
+              <i
+                class="fas fa-calculator"
+                style="color: var(--primary-green)"
+              ></i>
+              <h3>Calculadora de Impacto</h3>
+            </div>
+
+            <p>¿Cuántos árboles quieres plantar?</p>
+
+            <div class="range-container">
+              <div class="slider-label">
+                <span>1</span>
+                <span
+                  id="slider-val-display"
+                  style="
+                    font-size: 1.2rem;
+                    color: var(--primary-green);
+                    font-weight: 700;
+                  "
+                  >10</span
+                >
+                <span>100</span>
+              </div>
+              <input
+                type="range"
+                id="tree-slider"
+                min="1"
+                max="100"
+                value="10"
+                aria-label="Seleccionar cantidad de árboles"
+              />
+            </div>
+
+            <div class="results-grid">
+              <div class="result-box">
+                <span class="result-num" id="co2-result">210</span>
+                <span class="result-label">KG CO₂ Absorbido/Año</span>
+              </div>
+              <div class="result-box">
+                <span class="result-num" id="area-result">20</span>
+                <span class="result-label">m² Superficie Reforestada</span>
+              </div>
+            </div>
+
+            <div class="impact-msg" id="impact-message">
+              "Excelente aporte para tu comunidad"
+            </div>
+
+            <button
+              class="btn btn-primary"
+              style="width: 100%; margin-top: 20px"
+              id="btn-donar"
+            >
+              Donar Ahora
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section">
+        <div class="container">
+          <div class="section-header reveal">
+            <h2>Contáctanos</h2>
+            <p>¿Tienes preguntas? Estamos aquí para responderlas.</p>
+          </div>
+
+          <form class="contact-form reveal" id="contact-form" novalidate>
+            <div class="form-group">
+              <label for="name">Nombre</label>
+              <input
+                type="text"
+                id="name"
+                class="form-control"
+                placeholder="Tu nombre"
+                required
+              />
+              <span class="error-msg"
+                >Por favor ingresa un nombre válido (min 3 letras).</span
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                class="form-control"
+                placeholder="tu@email.com"
+                required
+              />
+              <span class="error-msg">Ingresa un email válido.</span>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Mensaje</label>
+              <textarea
+                id="message"
+                rows="5"
+                class="form-control"
+                placeholder="¿Cómo podemos ayudarte?"
+                required
+              ></textarea>
+              <span class="error-msg">El mensaje no puede estar vacío.</span>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%">
+              <i class="far fa-paper-plane"></i> Enviar Mensaje
+            </button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-logo">ECOFUTURO</div>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook"
+            ><i class="fab fa-facebook-f"></i
+          ></a>
+          <a href="#" aria-label="Instagram"
+            ><i class="fab fa-instagram"></i
+          ></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="LinkedIn"
+            ><i class="fab fa-linkedin-in"></i
+          ></a>
+        </div>
+        <p class="copyright">Sustentabilidad • Comunidad • Transparencia</p>
+        <p class="copyright">
+          © 2025 EcoFuturo ONG. Todos los derechos reservados.
+        </p>
+      </div>
+    </footer>
+
+    <div id="back-to-top" aria-label="Volver arriba">
+      <i class="fas fa-arrow-up"></i>
+    </div>
+    <div id="toast-container"></div>
+
+    <div id="lightbox">
+      <span class="close-lightbox">&times;</span>
+      <img src="" alt="" id="lightbox-img" />
+      <div id="lightbox-caption"></div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
