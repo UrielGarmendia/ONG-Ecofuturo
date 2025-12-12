@@ -5,33 +5,54 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "Reforestación Amazonas",
       category: "selva",
       desc: "Recuperación de flora nativa en zonas afectadas por incendios forestales.",
-      imgMobile:
-        "https://images.unsplash.com/photo-1511497584788-876760111969?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-      imgDesktop:
-        "https://images.unsplash.com/photo-1511497584788-876760111969?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      img: "assets/reforestacion-amazonas.webp",
       alt: "Vista aérea detallada y exuberante de la selva amazónica con densos árboles verdes y neblina mística.",
+      detailedDesc: "Proyecto insignia que restaura 250 hectáreas degradadas. Reintroducimos especies endémicas y generamos 45 empleos locales."
     },
     {
       id: 2,
       title: "Pulmón Urbano Santiago",
       category: "urbano",
       desc: "Creación de micro-bosques en plazas de cemento para reducir islas de calor.",
-      imgMobile:
-        "https://images.unsplash.com/photo-1448375240586-dfd8d395ea6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-      imgDesktop:
-        "https://images.unsplash.com/photo-1448375240586-dfd8d395ea6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      img: "assets/pulmon-urbano.webp",
       alt: "Parque urbano moderno con árboles jóvenes plantados simétricamente entre edificios de cristal bajo un día soleado.",
+      detailedDesc: "Micro-bosques que reducen temperatura 5°C y mejoran aire 40%. Espacios para 15,000 personas."
     },
     {
       id: 3,
       title: "Corredor Biológico Sur",
       category: "selva",
       desc: "Conectando fragmentos de bosque para permitir el tránsito de fauna nativa.",
-      imgMobile:
-        "https://images.unsplash.com/photo-1502082553048-f009c37129b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-      imgDesktop:
-        "https://images.unsplash.com/photo-1502082553048-f009c37129b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      img: "assets/corredor-biologico.webp",
       alt: "Sendero natural en un bosque templado lluvioso con helechos gigantes y árboles ancestrales cubiertos de musgo.",
+      detailedDesc: "Conecta 8 reservas naturales. Protege rutas migratorias de 200+ especies amenazadas."
+    },
+    {
+      id: 4,
+      title: "Restauración Manglar Pacífico",
+      category: "costero",
+      desc: "Recuperación de ecosistemas de manglar para proteger la biodiversidad marina.",
+      img: "assets/proyecto-manglar-costero.png",
+      alt: "Ecosistema de manglar costero.",
+      detailedDesc: "Manglares capturan 4x más carbono. Hábitat para 300+ especies marinas."
+    },
+    {
+      id: 5,
+      title: "Bosque Vertical CDMX",
+      category: "urbano",
+      desc: "Jardines verticales en fachadas para combatir contaminación.",
+      img: "assets/proyecto-jardin-vertical.png",
+      alt: "Fachada con vegetación vertical.",
+      detailedDesc: "Filtramos 25kg contaminantes/año. Reducimos ruido 8dB y mejoramos salud mental."
+    },
+    {
+      id: 6,
+      title: "Reforestación Altiplano",
+      category: "andino",
+      desc: "Especies nativas resistentes a sequía en ecosistemas de altura.",
+      img: "assets/proyecto-zona-arida.png",
+      alt: "Paisaje árido del altiplano.",
+      detailedDesc: "Usamos queñua y tola. Trabajo con comunidades indígenas."
     },
   ];
 
@@ -45,6 +66,96 @@ document.addEventListener("DOMContentLoaded", () => {
       animateValue(document.getElementById("tree-counter"), 0, 15430, 2000);
     }, 500);
   });
+
+  function renderProjects(filter = "all", searchTerm = "") {
+    projectsContainer.innerHTML = "";
+
+    const filtered = projectsData.filter((p) => {
+      const matchCat = filter === "all" || p.category === filter;
+      const matchSearch =
+        p.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        p.desc.toLowerCase().includes(searchTerm.toLowerCase());
+      return matchCat && matchSearch;
+    });
+
+    if (filtered.length === 0) {
+      projectsContainer.innerHTML =
+        '<p style="text-align:center; grid-column: 1/-1;">No se encontraron proyectos.</p>';
+      return;
+    }
+
+    filtered.forEach((p) => {
+      const isFav = favorites.includes(p.id);
+      const card = document.createElement("div");
+      
+      // Mantenemos la clase reveal para la animación de entrada
+      card.className = "project-card reveal";
+      
+      // ESTRUCTURA HTML PARA EL FLIP
+      // Nota: Usamos detailedDesc en la parte trasera
+      card.innerHTML = `
+        <div class="card-inner">
+          
+          <div class="card-front">
+            <button class="fav-btn ${isFav ? "active" : ""}" data-id="${p.id}" aria-label="Añadir a favoritos">
+              <i class="fas fa-heart"></i>
+            </button>
+            <div class="project-img-container" onclick="openLightbox('${p.img}', '${p.title}')">
+              <img src="${p.img}" alt="${p.alt}" loading="lazy">
+            </div>
+            <div class="card-body">
+              <span class="card-category">${p.category}</span>
+              <h3 class="card-title">${p.title}</h3>
+              <p class="card-text">${p.desc}</p>
+              
+              <button class="btn-text flip-btn" style="color: var(--primary-green); font-weight:700; background:none; border:none; cursor:pointer; padding:8px 0; margin-top: auto; display: flex; align-items: center; gap: 5px;">
+                Leer más <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="card-back">
+            <h4><i class="fas fa-info-circle"></i> Detalles del Proyecto</h4>
+            <p>${p.detailedDesc}</p>
+            
+            <button class="btn btn-primary flip-back-btn">
+              <i class="fas fa-undo"></i> Volver
+            </button>
+          </div>
+
+        </div>
+      `;
+      projectsContainer.appendChild(card);
+    });
+
+    // REINICIALIZAR EVENTOS
+    // 1. Eventos Favoritos
+    document.querySelectorAll(".fav-btn").forEach((btn) => {
+      btn.addEventListener("click", toggleFavorite);
+    });
+
+    // 2. Evento para GIRAR (Leer más)
+    document.querySelectorAll(".flip-btn").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault(); // Evita saltos de scroll
+        e.stopPropagation(); // Evita que clicks internos afecten a otros elementos
+        const card = btn.closest(".project-card");
+        card.classList.add("flipped");
+      });
+    });
+
+    // 3. Evento para VOLVER (Girar al revés)
+    document.querySelectorAll(".flip-back-btn").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const card = btn.closest(".project-card");
+        card.classList.remove("flipped");
+      });
+    });
+
+    checkScroll(); // Verifica si los elementos deben aparecer
+  }
 
   const particlesContainer = document.getElementById("particles-container");
   for (let i = 0; i < 15; i++) {
@@ -119,35 +230,52 @@ document.addEventListener("DOMContentLoaded", () => {
       const card = document.createElement("div");
       card.className = "project-card reveal";
       card.innerHTML = `
-                        <button class="fav-btn ${
-                          isFav ? "active" : ""
-                        }" data-id="${p.id}" aria-label="Añadir a favoritos">
-                            <i class="fas fa-heart"></i>
-                        </button>
-                        <div class="project-img-container" onclick="openLightbox('${
-                          p.imgDesktop
-                        }', '${p.title}')">
-                            <picture>
-                                <source srcset="${
-                                  p.imgMobile
-                                }" media="(max-width: 600px)">
-                                <img src="${p.imgDesktop}" alt="${
-        p.alt
-      }" loading="lazy">
-                            </picture>
-                        </div>
-                        <div class="card-body">
-                            <span class="card-category">${p.category}</span>
-                            <h3 class="card-title">${p.title}</h3>
-                            <p class="card-text">${p.desc}</p>
-                            <a href="#" class="btn-text" style="color: var(--primary-green); font-weight:700;">Leer más <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    `;
+        <div class="card-inner">
+          <div class="card-front">
+            <button class="fav-btn ${isFav ? "active" : ""}" data-id="${p.id}" aria-label="Añadir a favoritos">
+              <i class="fas fa-heart"></i>
+            </button>
+            <div class="project-img-container" onclick="openLightbox('${p.img}', '${p.title}')">
+              <img src="${p.img}" alt="${p.alt}" loading="lazy">
+            </div>
+            <div class="card-body">
+              <span class="card-category">${p.category}</span>
+              <h3 class="card-title">${p.title}</h3>
+              <p class="card-text">${p.desc}</p>
+              <button class="btn-text flip-btn" data-id="${p.id}" style="color: var(--primary-green); font-weight:700; background:none; border:none; cursor:pointer; padding:8px 0;">
+                Leer más <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+          <div class="card-back">
+            <h4 style="color: var(--primary-green); margin-bottom: 15px;">Detalles del Proyecto</h4>
+            <p style="line-height: 1.8; margin-bottom: 20px;">${p.detailedDesc}</p>
+            <button class="btn btn-primary flip-back-btn" data-id="${p.id}">
+              <i class="fas fa-arrow-left"></i> Volver
+            </button>
+          </div>
+        </div>
+      `;
       projectsContainer.appendChild(card);
     });
 
     document.querySelectorAll(".fav-btn").forEach((btn) => {
       btn.addEventListener("click", toggleFavorite);
+    });
+
+    document.querySelectorAll(".flip-btn").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        const card = btn.closest(".project-card");
+        card.classList.add("flipped");
+      });
+    });
+
+    document.querySelectorAll(".flip-back-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const card = btn.closest(".project-card");
+        card.classList.remove("flipped");
+      });
     });
 
     checkScroll();
