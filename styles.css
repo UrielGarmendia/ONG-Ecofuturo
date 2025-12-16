@@ -283,9 +283,6 @@ body.dark-mode .btn-primary {
   transform: translateY(-5px);
 }
 
-/* =========================================
-           HEADER & NAVBAR
-           ========================================= */
 header {
   background-color: var(--bg-color);
   padding: 15px 0;
@@ -299,6 +296,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 }
 
 .logo {
@@ -315,24 +313,26 @@ nav {
   gap: 30px;
 }
 
+.nav-links li {
+  list-style: none;
+}
+
 .nav-links a {
   font-weight: 600;
   position: relative;
+  display: block;
+  padding: 10px 15px;
+  text-decoration: none;
+  transition: color 0.3s, text-decoration 0.3s;
+  font-size: 1.1rem;
 }
 
-.nav-links a::after {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: -5px;
-  left: 0;
-  background-color: var(--primary-green);
-  transition: width 0.3s;
-}
-
-.nav-links a:hover::after {
-  width: 100%;
+.nav-links a:hover {
+  color: var(--primary-green);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: var(--primary-green);
+  text-decoration-thickness: 2px;
 }
 
 .theme-toggle {
@@ -341,19 +341,17 @@ nav {
   color: var(--text-color);
   background: none;
   border: none;
+  margin-left: 50px;
   padding: 5px;
+  outline: none;
 }
 
-/* Menú Mobile */
 .hamburger {
   display: none;
   font-size: 1.5rem;
   cursor: pointer;
 }
 
-/* =========================================
-           HERO SECTION
-           ========================================= */
 .hero {
   position: relative;
   height: 90vh;
@@ -378,7 +376,7 @@ nav {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(0.5); /* Oscurecer para legibilidad */
+  filter: brightness(0.5);
 }
 
 .hero-content {
@@ -398,7 +396,6 @@ nav {
   margin-bottom: 30px;
 }
 
-/* Partículas CSS (Simplificado) */
 .particles {
   position: absolute;
   top: 0;
@@ -428,9 +425,6 @@ nav {
   }
 }
 
-/* =========================================
-           CONTADORES
-           ========================================= */
 .stats-bar {
   background-color: var(--primary-green);
   color: white;
@@ -454,9 +448,6 @@ nav {
   letter-spacing: 1px;
 }
 
-/* =========================================
-           SECCIÓN PROYECTOS
-           ========================================= */
 .section {
   padding: 80px 0;
 }
@@ -625,9 +616,6 @@ nav {
   cursor: pointer;
 }
 
-/* =========================================
-           INVOLUCRATE & CALCULADORA
-           ========================================= */
 .involve-section {
   background-color: var(--primary-green);
   color: white;
@@ -741,9 +729,6 @@ input[type="range"]::-webkit-slider-thumb:hover {
   justify-content: center;
 }
 
-/* =========================================
-           CONTACTO & FOOTER
-           ========================================= */
 .contact-form {
   max-width: 600px;
   margin: 0 auto;
@@ -832,29 +817,52 @@ footer {
   opacity: 0.6;
 }
 
-/* =========================================
-           RESPONSIVE
-           ========================================= */
 @media (max-width: 768px) {
   .hero h1 {
     font-size: 2.2rem;
   }
   .nav-links {
-    display: none; /* Simplificado para demo, idealmente un menu toggle JS */
+    display: flex;
     position: absolute;
-    top: 60px;
-    left: 0;
-    width: 100%;
+    top: 55px;
+    left: -20px;
+    right: -20px;
+    width: calc(100% + 40px);
     background-color: var(--bg-color);
     flex-direction: column;
-    padding: 20px;
+    padding: 0;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transform: translateY(-10px);
+    transition: max-height 0.4s ease, opacity 0.4s ease, transform 0.4s ease;
+  }
+  .nav-links li {
+    margin: 0;
+  }
+  .nav-links a {
+    padding: 20px;
+    display: block;
   }
   .nav-links.active {
-    display: flex;
+    max-height: 500px;
+    opacity: 1;
+    transform: translateY(0);
   }
   .hamburger {
     display: block;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .theme-toggle {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 50%;
   }
 
   .involve-grid {
@@ -869,7 +877,6 @@ footer {
   }
 }
 
-/* Utilidad para Scroll Reveal */
 .reveal {
   opacity: 0;
   transform: translateY(30px);
@@ -907,19 +914,27 @@ footer {
   padding: 30px 20px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  min-height: 400px;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 450px;
+  max-height: 450px;
+  overflow-y: auto;
 }
 .card-back h4 {
   color: var(--primary-green);
   margin-bottom: 15px;
   font-size: 1.3rem;
+  flex-shrink: 0;
 }
 .card-back p {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   line-height: 1.8;
+  flex-grow: 1;
+  overflow-y: auto;
+  padding-right: 10px;
 }
 .flip-back-btn {
   margin-top: auto;
   align-self: center;
+  flex-shrink: 0;
 }

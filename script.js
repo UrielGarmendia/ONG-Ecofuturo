@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
       desc: "Recuperación de flora nativa en zonas afectadas por incendios forestales.",
       img: "assets/reforestacion-amazonas.webp",
       alt: "Vista aérea detallada y exuberante de la selva amazónica con densos árboles verdes y neblina mística.",
-      detailedDesc: "Proyecto insignia que restaura 250 hectáreas degradadas. Reintroducimos especies endémicas y generamos 45 empleos locales."
+      detailedDesc: "Restauramos 250 hectáreas degradadas reintroduciendo más de 35 especies endémicas como caoba, cedro y shiringa. Hemos plantado 125,000 árboles nativos que capturan 15,000 toneladas de CO₂ anuales. Incluye viveros comunitarios y programas educativos que han capacitado a más de 300 personas."
     },
     {
       id: 2,
@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
       desc: "Creación de micro-bosques en plazas de cemento para reducir islas de calor.",
       img: "assets/pulmon-urbano.webp",
       alt: "Parque urbano moderno con árboles jóvenes plantados simétricamente entre edificios de cristal bajo un día soleado.",
-      detailedDesc: "Micro-bosques que reducen temperatura 5°C y mejoran aire 40%. Espacios para 15,000 personas."
+      detailedDesc: "Usamos metodología Miyawaki para micro-bosques que crecen 10x más rápido. Reducen temperatura 5°C y mejoran calidad del aire 40%, filtrando 2 toneladas de contaminantes/año. Transformamos 8 plazas urbanas beneficiando a 15,000 personas."
     },
     {
       id: 3,
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
       desc: "Conectando fragmentos de bosque para permitir el tránsito de fauna nativa.",
       img: "assets/corredor-biologico.webp",
       alt: "Sendero natural en un bosque templado lluvioso con helechos gigantes y árboles ancestrales cubiertos de musgo.",
-      detailedDesc: "Conecta 8 reservas naturales. Protege rutas migratorias de 200+ especies amenazadas."
+      detailedDesc: "Conectamos 8 reservas naturales con 45 km de corredores ecológicos. Protegemos rutas migratorias de 200+ especies amenazadas: puma, huemul y pudú. Las cámaras trampa documentan 60% más tránsito de fauna. Trabajamos con 18 propietarios bajo acuerdos voluntarios. 1,200 hectáreas de bosque nativo restaurado."
     },
     {
       id: 4,
@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
       desc: "Recuperación de ecosistemas de manglar para proteger la biodiversidad marina.",
       img: "assets/proyecto-manglar-costero.png",
       alt: "Ecosistema de manglar costero.",
-      detailedDesc: "Manglares capturan 4x más carbono. Hábitat para 300+ especies marinas."
+      detailedDesc: "Los manglares capturan 4x más carbono que bosques terrestres. Restauramos 80 hectáreas: hábitat para 300+ especies marinas. Aumentamos poblaciones de peces 85% beneficiando a 25 comunidades pesqueras. 150,000 propágulos de mangle rojo, negro y blanco plantados."
     },
     {
       id: 5,
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
       desc: "Jardines verticales en fachadas para combatir contaminación.",
       img: "assets/proyecto-jardin-vertical.png",
       alt: "Fachada con vegetación vertical.",
-      detailedDesc: "Filtramos 25kg contaminantes/año. Reducimos ruido 8dB y mejoramos salud mental."
+      detailedDesc: "12 jardines verticales filtran 25kg contaminantes/año cada uno. Reducen ruido 8dB y temperatura interior 4°C, ahorrando 30% en aire acondicionado. 800-1,200 plantas de 40 especies nativas mexicanas por jardín. Mejoran salud mental reduciendo estrés 35%. Riego automático con agua reciclada."
     },
     {
       id: 6,
@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
       desc: "Especies nativas resistentes a sequía en ecosistemas de altura.",
       img: "assets/proyecto-zona-arida.png",
       alt: "Paisaje árido del altiplano.",
-      detailedDesc: "Usamos queñua y tola. Trabajo con comunidades indígenas."
+      detailedDesc: "Trabajamos 3,500-4,200 msnm con queñua y tola, especies ultra resistentes. 180 hectáreas de bosque andino restaurado (ecosistema con <10% cobertura original). Alianza con 8 comunidades quechuas y aymaras. 90,000 ejemplares plantados con 78% supervivencia. Regulan ciclo hídrico y protegen suelos."
     },
   ];
 
