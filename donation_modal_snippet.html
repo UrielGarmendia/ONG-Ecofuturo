@@ -1,0 +1,31 @@
+      <!-- Donation Modal -->
+      <div id="donation-modal" class="newsletter-modal">
+        <div class="newsletter-content" style="text-align: left;">
+          <button class="newsletter-close" id="donation-close">&times;</button>
+          <div style="text-align: center; margin-bottom: 20px;">
+            <i class="fas fa-hand-holding-heart newsletter-icon"></i>
+            <h3>Haz tu Aporte</h3>
+            <p>Tu donación planta árboles reales y transforma comunidades.</p>
+          </div>
+          
+          <form id="donation-form">
+            <div style="margin-bottom: 15px;">
+              <label style="display:block; margin-bottom:8px; font-weight:600;">Elige el monto</label>
+              <div style="display:flex; gap:10px; margin-bottom:10px;">
+                <button type="button" class="btn-outline donation-amount" data-amount="5000">$5.000</button>
+                <button type="button" class="btn-outline donation-amount" data-amount="10000">$10.000</button>
+                <button type="button" class="btn-outline donation-amount" data-amount="20000">$20.000</button>
+              </div>
+              <input type="number" id="donation-custom" placeholder="O ingresa tu monto" style="width:100%; padding: 12px; border: 2px solid var(--border-color); border-radius: 8px;">
+            </div>
+
+            <div style="margin-bottom: 15px;">
+              <label for="donor-email" style="display:block; margin-bottom:8px; font-weight:600;">Tu Correo</label>
+              <input type="email" id="donor-email" required placeholder="nombre@ejemplo.com" style="width:100%; padding: 12px; border: 2px solid var(--border-color); border-radius: 8px;">
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Proceder al Pago</button>
+            <p style="font-size: 0.8rem; margin-top: 10px; text-align: center; opacity: 0.7;"><i class="fas fa-lock"></i> Pago procesado de forma segura</p>
+          </form>
+        </div>
+      </div>

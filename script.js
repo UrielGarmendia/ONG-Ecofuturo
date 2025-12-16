@@ -346,6 +346,54 @@ document.addEventListener("DOMContentLoaded", () => {
       updateCalculator(+sliderElement.value);
     }
     sliderElement.addEventListener("change", e => localStorage.setItem("ecoSliderValue", e.target.value));
+
+    const donateBtn = document.getElementById("donate-calc-btn");
+    const donationModal = document.getElementById("donation-modal");
+    const donationClose = document.getElementById("donation-close");
+    const donationForm = document.getElementById("donation-form");
+    const customAmount = document.getElementById("donation-custom");
+    const donationSummary = document.getElementById("donation-summary");
+
+    if (donateBtn && donationModal) {
+      // Open modal
+      donateBtn.addEventListener("click", () => {
+        donationModal.classList.add("active");
+        
+        // Calculate amount based on trees
+        const currentTrees = parseInt(sliderElement.value) || 1;
+        const pricePerTree = 1000;
+        const totalAmount = currentTrees * pricePerTree;
+
+        // Update UI
+        if (customAmount) customAmount.value = totalAmount;
+        if (donationSummary) {
+          donationSummary.innerHTML = `<i class="fas fa-tree"></i> Plantando <strong>${currentTrees} ${currentTrees === 1 ? 'árbol' : 'árboles'}</strong>`;
+        }
+      });
+
+      // Close modal
+      if (donationClose) {
+        donationClose.addEventListener("click", () => donationModal.classList.remove("active"));
+      }
+      donationModal.addEventListener("click", e => {
+        if (e.target === donationModal) donationModal.classList.remove("active");
+      });
+
+      // Handle Submit
+      if (donationForm) {
+        donationForm.addEventListener("submit", e => {
+          e.preventDefault();
+          const amount = customAmount ? customAmount.value : 0;
+          if (!amount || amount <= 0) {
+            showToast("Por favor ingresa un monto válido", "error");
+            return;
+          }
+          
+          donationModal.classList.remove("active");
+          showToast(`¡Gracias! Redirigiendo a pasarela de pago... ($${amount})`, "success");
+        });
+      }
+    }
   }
 
   const accordionHeaders = document.querySelectorAll('.accordion-header');
