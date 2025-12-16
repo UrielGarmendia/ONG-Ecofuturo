@@ -1,0 +1,27 @@
+{
+  "name": "EcoFuturo - Reforestación Latinoamérica",
+  "short_name": "EcoFuturo",
+  "description": "ONG líder en restauración de bosques en Latinoamérica para el 2035",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f6f4e8",
+  "theme_color": "#2d6a4f",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["lifestyle", "education", "environment"],
+  "lang": "es",
+  "dir": "ltr"
+}

@@ -607,6 +607,11 @@ nav {
   text-align: center;
   max-width: 80%;
 }
+#lightbox-counter {
+  color: white;
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
 .close-lightbox {
   position: absolute;
   top: 30px;
@@ -614,6 +619,105 @@ nav {
   color: white;
   font-size: 3rem;
   cursor: pointer;
+  z-index: 10;
+}
+.lightbox-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.2);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  padding: 20px;
+  cursor: pointer;
+  transition: background 0.3s;
+  z-index: 10;
+}
+.lightbox-arrow:hover {
+  background: rgba(255,255,255,0.4);
+}
+.lightbox-prev {
+  left: 20px;
+}
+.lightbox-next {
+  right: 20px;
+}
+
+/* Newsletter Popup */
+.newsletter-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  z-index: 10003;
+  justify-content: center;
+  align-items: center;
+}
+.newsletter-modal.active {
+  display: flex;
+}
+.newsletter-content {
+  background: var(--card-bg);
+  padding: 40px;
+  border-radius: 20px;
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
+  position: relative;
+  animation: slideUp 0.4s ease;
+}
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.newsletter-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: var(--text-color);
+  cursor: pointer;
+  line-height: 1;
+}
+.newsletter-icon {
+  font-size: 3rem;
+  color: var(--primary-green);
+  margin-bottom: 20px;
+}
+.newsletter-content h3 {
+  color: var(--primary-green);
+  margin-bottom: 15px;
+  font-size: 1.8rem;
+}
+.newsletter-content p {
+  margin-bottom: 25px;
+  color: var(--text-color);
+  opacity: 0.9;
+}
+#newsletter-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+#newsletter-email {
+  padding: 15px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--input-bg);
+  color: var(--text-color);
+  font-size: 1rem;
 }
 
 .involve-section {
@@ -815,6 +919,74 @@ footer {
 .copyright {
   font-size: 0.8rem;
   opacity: 0.6;
+}
+
+/* Acordeón FAQ */
+.accordion {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.accordion-item {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  margin-bottom: 15px;
+  overflow: hidden;
+  transition: box-shadow 0.3s;
+}
+
+.accordion-item:hover {
+  box-shadow: var(--shadow);
+}
+
+.accordion-header {
+  width: 100%;
+  padding: 20px;
+  background: none;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-color);
+  text-align: left;
+  transition: color 0.3s;
+}
+
+.accordion-header:hover {
+  color: var(--primary-green);
+}
+
+.accordion-header i {
+  transition: transform 0.3s;
+  color: var(--primary-green);
+  font-size: 1rem;
+}
+
+.accordion-header[aria-expanded="true"] i {
+  transform: rotate(180deg);
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+  padding: 0 20px;
+}
+
+.accordion-content.active {
+  max-height: 500px;
+  padding: 0 20px 20px 20px;
+}
+
+.accordion-content p {
+  line-height: 1.8;
+  color: var(--text-color);
+  opacity: 0.9;
 }
 
 @media (max-width: 768px) {

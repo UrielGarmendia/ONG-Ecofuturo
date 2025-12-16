@@ -312,22 +312,155 @@ document.addEventListener("DOMContentLoaded", () => {
     renderProjects(activeFilter, e.target.value);
   });
 
+  // Lightbox Mejorado con Navegación
   const lightbox = document.getElementById("lightbox");
   const lightboxImg = document.getElementById("lightbox-img");
   const lightboxCaption = document.getElementById("lightbox-caption");
+  const lightboxCounter = document.getElementById("lightbox-counter");
   const closeLightbox = document.querySelector(".close-lightbox");
+  const lightboxPrev = document.querySelector(".lightbox-prev");
+  const lightboxNext = document.querySelector(".lightbox-next");
+  
+  let currentImageIndex = 0;
+  let lightboxImages = [];
 
   window.openLightbox = (src, caption) => {
-    lightboxImg.src = src;
-    lightboxCaption.textContent = caption;
+    // Crear array de todas las imágenes de proyectos
+    lightboxImages = [];
+    document.querySelectorAll('.project-img-container img').forEach(img => {
+      lightboxImages.push({
+        src: img.src,
+        alt: img.alt,
+        caption: img.closest('.project-card').querySelector('.card-title').textContent
+      });
+    });
+    
+    currentImageIndex = lightboxImages.findIndex(img => img.src === src);
+    showLightboxImage(currentImageIndex);
     lightbox.classList.add("active");
   };
+  
+  function showLightboxImage(index) {
+    if (index < 0) index = lightboxImages.length - 1;
+    if (index >= lightboxImages.length) index = 0;
+    
+    currentImageIndex = index;
+    const img = lightboxImages[currentImageIndex];
+    lightboxImg.src = img.src;
+    lightboxCaption.textContent = img.caption;
+    lightboxCounter.textContent = `${currentImageIndex + 1} / ${lightboxImages.length}`;
+  }
 
-  closeLightbox.addEventListener("click", () =>
-    lightbox.classList.remove("active")
-  );
+  closeLightbox.addEventListener("click", () => lightbox.classList.remove("active"));
+  lightboxPrev.addEventListener("click", () => showLightboxImage(currentImageIndex - 1));
+  lightboxNext.addEventListener("click", () => showLightboxImage(currentImageIndex + 1));
+  
   lightbox.addEventListener("click", (e) => {
     if (e.target === lightbox) lightbox.classList.remove("active");
+  });
+  
+  // Navegación por teclado
+  document.addEventListener("keydown", (e) => {
+    if (!lightbox.classList.contains("active")) return;
+    if (e.key === "Escape") lightbox.classList.remove("active");
+    if (e.key === "ArrowLeft") showLightboxImage(currentImageIndex - 1);
+    if (e.key === "ArrowRight") showLightboxImage(currentImageIndex + 1);
+  });
+  
+  // ==========================================
+  // EMAILJS - Formulario de Contacto
+  // ==========================================
+  const contactForm = document.getElementById("contact-form");
+  
+  contactForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    
+    let allValid = true;
+    const inputs = contactForm.querySelectorAll("input, textarea");
+    inputs.forEach((input) => {
+      if (!validateInput({ target: input })) allValid = false;
+    });
+
+    if (allValid) {
+      // Obtener valores del formulario
+      const templateParams = {
+        nombre: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        mensaje: document.getElementById("message").value,
+        asunto: "Contacto desde la web"
+      };
+      
+      // Enviar con EmailJS
+      emailjs.send('service_iqulzup', 'template_8fgwals', templateParams)
+        .then(() => {
+          showToast("¡Mensaje enviado con éxito!", "success");
+          contactForm.reset();
+          inputs.forEach((i) => i.classList.remove("success"));
+        }, (error) => {
+          showToast("Error al enviar. Intenta nuevamente.", "error");
+          console.error('EmailJS error:', error);
+        });
+    } else {
+      showToast("Por favor corrige los errores.", "error");
+    }
+  });
+  
+  // ==========================================
+  // NEWSLETTER POPUP
+  // ==========================================
+  const newsletterModal = document.getElementById("newsletter-modal");
+  const newsletterClose = document.querySelector(".newsletter-close");
+  const newsletterForm = document.getElementById("newsletter-form");
+  
+  // Mostrar popup después de 10 segundos si no se ha mostrado antes
+  const newsletterShown = localStorage.getItem("newsletterShown");
+  if (!newsletterShown) {
+    setTimeout(() => {
+      newsletterModal.classList.add("active");
+    }, 10000);
+  }
+  
+  newsletterClose.addEventListener("click", () => {
+    newsletterModal.classList.remove("active");
+    localStorage.setItem("newsletterShown", "true");
+  });
+  
+  newsletterModal.addEventListener("click", (e) => {
+    if (e.target === newsletterModal) {
+      newsletterModal.classList.remove("active");
+      localStorage.setItem("newsletterShown", "true");
+    }
+  });
+  
+  newsletterForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const emailInput = document.getElementById("newsletter-email");
+    const emailValue = emailInput.value.trim();
+    
+    // Validar email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(emailValue)) {
+      showToast("Por favor ingresa un email válido.", "error");
+      return;
+    }
+    
+    // Enviar con EmailJS - enviar múltiples variantes para compatibilidad
+    const templateParams = {
+      email: emailValue,
+      user_email: emailValue,
+      to_email: emailValue
+    };
+    
+    emailjs.send('service_iqulzup', 'template_b6a8ywr', templateParams)
+      .then(() => {
+        showToast("¡Gracias por suscribirte!", "success");
+        newsletterModal.classList.remove("active");
+        localStorage.setItem("newsletterShown", "true");
+        newsletterForm.reset();
+      }, (error) => {
+        showToast("Error al suscribirte. Intenta nuevamente.", "error");
+        console.error('EmailJS error:', error);
+      });
   });
 
   const slider = document.getElementById("tree-slider");
@@ -476,6 +609,30 @@ document.addEventListener("DOMContentLoaded", () => {
       setTimeout(() => toast.remove(), 300);
     }, 3000);
   }
+
+  // ==========================================
+  // 11. ACORDEÓN FAQ
+  // ==========================================
+  const accordionHeaders = document.querySelectorAll('.accordion-header');
+  
+  accordionHeaders.forEach(header => {
+    header.addEventListener('click', () => {
+      const isExpanded = header.getAttribute('aria-expanded') === 'true';
+      const content = header.nextElementSibling;
+      
+      // Cerrar todos los demás acordeones
+      accordionHeaders.forEach(otherHeader => {
+        if (otherHeader !== header) {
+          otherHeader.setAttribute('aria-expanded', 'false');
+          otherHeader.nextElementSibling.classList.remove('active');
+        }
+      });
+      
+      // Toggle del acordeón actual
+      header.setAttribute('aria-expanded', !isExpanded);
+      content.classList.toggle('active');
+    });
+  });
 
   // Inicializar App
   renderProjects();
