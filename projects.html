@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Explora los proyectos de reforestación de EcoFuturo en Latinoamérica" />
+    <title>Proyectos | EcoFuturo</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌳</text></svg>" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#2d6a4f" />
+  </head>
+  <body>
+    <div id="preloader">
+      <div class="loader-icon"><i class="fas fa-leaf"></i></div>
+      <h2 style="margin-top: 20px; color: var(--primary-green)">EcoFuturo</h2>
+    </div>
+
+    <header>
+      <div class="container">
+        <nav>
+          <div class="logo"><i class="fas fa-tree"></i> EcoFuturo</div>
+          <div class="hamburger" id="hamburger">
+            <i class="fas fa-bars"></i>
+          </div>
+          <ul class="nav-links" id="nav-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="about.html">Nosotros</a></li>
+            <li><a href="projects.html" class="active">Proyectos</a></li>
+            <li><a href="involve.html">Involúcrate</a></li>
+            <li><a href="contact.html">Contacto</a></li>
+          </ul>
+          <button id="theme-toggle" class="theme-toggle" aria-label="Cambiar modo oscuro">
+            <i class="fas fa-moon"></i>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="hero" style="height: 50vh; min-height: 400px;">
+        <div class="hero-bg">
+          <picture>
+            <img src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Vista aérea de bosque nativo siendo reforestado con especies endémicas" />
+          </picture>
+        </div>
+        <div class="hero-content reveal" style="text-align: center;">
+          <h1>Nuestros Proyectos</h1>
+          <p>Iniciativas activas de reforestación en Latinoamérica</p>
+        </div>
+      </section>
+
+      <section id="projects" class="section">
+        <div class="container">
+          <div class="section-header reveal">
+            <h2>Proyectos Activos</h2>
+            <p>Explora nuestras iniciativas de restauración de ecosistemas</p>
+          </div>
+
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Buscar proyecto..."
+            aria-label="Buscar proyectos"
+          />
+
+          <div class="controls reveal">
+            <button class="filter-btn active" data-filter="all">Todos</button>
+            <button class="filter-btn" data-filter="selva">Selva</button>
+            <button class="filter-btn" data-filter="urbano">Urbano</button>
+            <button class="filter-btn" data-filter="costero">Costero</button>
+            <button class="filter-btn" data-filter="andino">Andino</button>
+          </div>
+
+          <div class="projects-grid" id="projects-container"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h4><i class="fas fa-tree"></i> EcoFuturo</h4>
+            <p>Restaurando el futuro, un árbol a la vez.</p>
+          </div>
+          <div class="footer-section">
+            <h4>Enlaces</h4>
+            <ul>
+              <li><a href="index.html">Inicio</a></li>
+              <li><a href="about.html">Nosotros</a></li>
+              <li><a href="projects.html">Proyectos</a></li>
+              <li><a href="contact.html">Contacto</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4>Contacto</h4>
+            <p><i class="fas fa-envelope"></i> info@ecofuturo.org</p>
+            <p><i class="fas fa-phone"></i> +54 11 1234-5678</p>
+          </div>
+          <div class="footer-section">
+            <h4>Síguenos</h4>
+            <div class="social-links">
+              <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+              <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+              <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="copyright">
+          &copy; 2025 EcoFuturo. Todos los derechos reservados.
+        </div>
+      </div>
+    </footer>
+
+    <div id="back-to-top" aria-label="Volver arriba">
+      <i class="fas fa-arrow-up"></i>
+    </div>
+    <div id="toast-container"></div>
+
+    <div id="lightbox">
+      <span class="close-lightbox">&times;</span>
+      <button class="lightbox-arrow lightbox-prev" aria-label="Imagen anterior">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button class="lightbox-arrow lightbox-next" aria-label="Imagen siguiente">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+      <img src="" alt="" id="lightbox-img" />
+      <div id="lightbox-caption"></div>
+      <div id="lightbox-counter"></div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

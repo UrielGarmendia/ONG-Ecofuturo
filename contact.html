@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Contacta con EcoFuturo - Preguntas, donaciones y colaboraciones" />
+    <title>Contacto | EcoFuturo</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌳</text></svg>" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#2d6a4f" />
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+      (function () {
+        emailjs.init("CCmptJCeI8MTJUDHO");
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="preloader">
+      <div class="loader-icon"><i class="fas fa-leaf"></i></div>
+      <h2 style="margin-top: 20px; color: var(--primary-green)">EcoFuturo</h2>
+    </div>
+
+    <header>
+      <div class="container">
+        <nav>
+          <div class="logo"><i class="fas fa-tree"></i> EcoFuturo</div>
+          <div class="hamburger" id="hamburger">
+            <i class="fas fa-bars"></i>
+          </div>
+          <ul class="nav-links" id="nav-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="about.html">Nosotros</a></li>
+            <li><a href="projects.html">Proyectos</a></li>
+            <li><a href="involve.html">Involúcrate</a></li>
+            <li><a href="contact.html" class="active">Contacto</a></li>
+          </ul>
+          <button id="theme-toggle" class="theme-toggle" aria-label="Cambiar modo oscuro">
+            <i class="fas fa-moon"></i>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="hero" style="height: 50vh; min-height: 400px;">
+        <div class="hero-bg">
+          <picture>
+            <img src="https://images.unsplash.com/photo-1516738901171-8eb4fc13bd20?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Mapa de Latinoamérica con puntos de proyectos activos" />
+          </picture>
+        </div>
+        <div class="hero-content reveal" style="text-align: center;">
+          <h1>Contáctanos</h1>
+          <p>Estamos aquí para responder tus preguntas</p>
+        </div>
+      </section>
+
+      <section id="contact" class="section">
+        <div class="container">
+          <div class="section-header reveal">
+            <h2>Envíanos un Mensaje</h2>
+            <p>¿Tienes preguntas? Escríbenos y te responderemos pronto</p>
+          </div>
+
+          <form class="contact-form reveal" id="contact-form" novalidate>
+            <div class="form-group">
+              <label for="name">Nombre</label>
+              <input
+                type="text"
+                id="name"
+                name="nombre"
+                class="form-control"
+                placeholder="Tu nombre"
+                required
+                minlength="3"
+              />
+              <span class="error-msg">Por favor ingresa un nombre válido (min 3 letras).</span>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="form-control"
+                placeholder="tu@email.com"
+                required
+              />
+              <span class="error-msg">Ingresa un email válido.</span>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Mensaje</label>
+              <textarea
+                id="message"
+                name="mensaje"
+                rows="5"
+                class="form-control"
+                placeholder="¿Cómo podemos ayudarte?"
+                required
+                minlength="10"
+              ></textarea>
+              <span class="error-msg">El mensaje debe tener al menos 10 caracteres.</span>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%">
+              <i class="far fa-paper-plane"></i> Enviar Mensaje
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <section class="section" style="background: var(--bg-secondary);">
+        <div class="container">
+          <div class="section-header reveal">
+            <h2>Información de Contacto</h2>
+            <p>Otras formas de comunicarte con nosotros</p>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1000px; margin: 0 auto;">
+            <div class="reveal" style="background: var(--card-bg); padding: 30px; border-radius: 12px; text-align: center; box-shadow: var(--shadow);">
+              <i class="fas fa-envelope" style="font-size: 3rem; color: var(--primary-green); margin-bottom: 15px;"></i>
+              <h4 style="margin-bottom: 10px;">Email</h4>
+              <p><a href="mailto:info@ecofuturo.org" style="color: var(--text-color);">info@ecofuturo.org</a></p>
+            </div>
+
+            <div class="reveal" style="background: var(--card-bg); padding: 30px; border-radius: 12px; text-align: center; box-shadow: var(--shadow);">
+              <i class="fas fa-phone" style="font-size: 3rem; color: var(--primary-green); margin-bottom: 15px;"></i>
+              <h4 style="margin-bottom: 10px;">Teléfono</h4>
+              <p>+54 11 1234-5678</p>
+              <small>Lun-Vie 9:00-18:00</small>
+            </div>
+
+            <div class="reveal" style="background: var(--card-bg); padding: 30px; border-radius: 12px; text-align: center; box-shadow: var(--shadow);">
+              <i class="fas fa-map-marker-alt" style="font-size: 3rem; color: var(--primary-green); margin-bottom: 15px;"></i>
+              <h4 style="margin-bottom: 10px;">Oficina</h4>
+              <p>Buenos Aires, Argentina</p>
+              <small>Atención con cita previa</small>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="faq" class="section">
+        <div class="container">
+          <div class="section-header reveal">
+            <h2>Preguntas Frecuentes</h2>
+            <p>Resolvemos tus dudas sobre nuestro trabajo</p>
+          </div>
+
+          <div class="accordion reveal">
+            <div class="accordion-item">
+              <button class="accordion-header" aria-expanded="false">
+                <span>¿Cómo puedo donar árboles?</span>
+                <i class="fas fa-chevron-down"></i>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Puedes donar árboles usando nuestra calculadora de impacto en
+                  la sección "Involúcrate". Simplemente selecciona la cantidad
+                  de árboles que deseas plantar y haz clic en "Donar Ahora".
+                  Aceptamos pagos con tarjeta de crédito, débito y
+                  transferencias bancarias.
+                </p>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-header" aria-expanded="false">
+                <span>¿Dónde plantan los árboles?</span>
+                <i class="fas fa-chevron-down"></i>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Trabajamos en múltiples regiones de Latinoamérica incluyendo
+                  la Amazonía, zonas urbanas de Santiago y Ciudad de México,
+                  manglares del Pacífico, corredores biológicos del sur, y
+                  ecosistemas andinos de altura. Cada proyecto se enfoca en
+                  especies nativas adaptadas a su ecosistema específico.
+                </p>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-header" aria-expanded="false">
+                <span>¿Cómo garantizan la supervivencia de los árboles?</span>
+                <i class="fas fa-chevron-down"></i>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Implementamos prácticas de reforestación profesional:
+                  producimos plantines en viveros comunitarios, utilizamos
+                  especies nativas, protegemos contra ganado, damos
+                  mantenimiento durante 2-3 años, y realizamos monitoreos
+                  periódicos. Nuestra tasa promedio de supervivencia es del 78%.
+                </p>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-header" aria-expanded="false">
+                <span>¿Puedo visitar los proyectos?</span>
+                <i class="fas fa-chevron-down"></i>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  ¡Por supuesto! Organizamos jornadas de voluntariado mensuales
+                  donde puedes participar en plantaciones y conocer nuestros
+                  proyectos de primera mano. También ofrecemos tours educativos
+                  para grupos escolares y empresariales. Contáctanos para
+                  coordinar tu visita.
+                </p>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-header" aria-expanded="false">
+                <span>¿Cómo miden el impacto ambiental?</span>
+                <i class="fas fa-chevron-down"></i>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Utilizamos metodologías científicas validadas
+                  internacionalmente. Monitoreamos captura de CO₂, recuperación
+                  de biodiversidad con cámaras trampa, calidad de agua y suelo,
+                  y beneficios socioeconómicos para comunidades locales.
+                  Publicamos informes de impacto anuales con datos verificados.
+                </p>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-header" aria-expanded="false">
+                <span>¿Las donaciones son deducibles de impuestos?</span>
+                <i class="fas fa-chevron-down"></i>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Sí, EcoFuturo es una organización sin fines de lucro
+                  certificada. Todas las donaciones son deducibles de impuestos
+                  según la legislación de cada país. Emitimos certificados
+                  oficiales de donación que puedes usar en tu declaración anual
+                  de impuestos.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h4><i class="fas fa-tree"></i> EcoFuturo</h4>
+            <p>Restaurando el futuro, un árbol a la vez.</p>
+          </div>
+          <div class="footer-section">
+            <h4>Enlaces</h4>
+            <ul>
+              <li><a href="index.html">Inicio</a></li>
+              <li><a href="about.html">Nosotros</a></li>
+              <li><a href="projects.html">Proyectos</a></li>
+              <li><a href="contact.html">Contacto</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4>Contacto</h4>
+            <p><i class="fas fa-envelope"></i> info@ecofuturo.org</p>
+            <p><i class="fas fa-phone"></i> +54 11 1234-5678</p>
+          </div>
+          <div class="footer-section">
+            <h4>Síguenos</h4>
+            <div class="social-links">
+              <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+              <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+              <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="copyright">
+          &copy; 2025 EcoFuturo. Todos los derechos reservados.
+        </div>
+      </div>
+    </footer>
+
+    <div id="back-to-top" aria-label="Volver arriba">
+      <i class="fas fa-arrow-up"></i>
+    </div>
+    <div id="toast-container"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

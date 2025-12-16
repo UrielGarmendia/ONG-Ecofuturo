@@ -32,7 +32,7 @@
     ></script>
     <script type="text/javascript">
       (function () {
-        emailjs.init("CCmptJCeI8MTJUDHO"); // Usuario debe reemplazar con su clave
+        emailjs.init("CCmptJCeI8MTJUDHO");
       })();
     </script>
   </head>
@@ -50,10 +50,11 @@
             <i class="fas fa-bars"></i>
           </div>
           <ul class="nav-links" id="nav-links">
-            <li><a href="#hero">Inicio</a></li>
-            <li><a href="#projects">Proyectos</a></li>
-            <li><a href="#involve">Involúcrate</a></li>
-            <li><a href="#contact">Contacto</a></li>
+            <li><a href="index.html" class="active">Inicio</a></li>
+            <li><a href="about.html">Nosotros</a></li>
+            <li><a href="projects.html">Proyectos</a></li>
+            <li><a href="involve.html">Involúcrate</a></li>
+            <li><a href="contact.html">Contacto</a></li>
           </ul>
           <button
             id="theme-toggle"
@@ -118,274 +119,68 @@
         </div>
       </div>
 
-      <section id="projects" class="section">
+
+      <section id="projects-preview" class="section">
         <div class="container">
           <div class="section-header reveal">
-            <h2>Nuestros Proyectos</h2>
-            <p>Iniciativas activas de reforestación</p>
+            <h2>Proyectos Destacados</h2>
+            <p>Conoce algunas de nuestras iniciativas de reforestación</p>
           </div>
 
-          <input
-            type="text"
-            id="search-input"
-            placeholder="Buscar proyecto..."
-            aria-label="Buscar proyectos"
-          />
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 40px;">
+            <div class="reveal" style="background: var(--card-bg); padding: 25px; border-radius: 12px; box-shadow: var(--shadow); text-align: center;">
+              <i class="fas fa-tree" style="font-size: 3rem; color: var(--primary-green); margin-bottom: 15px;"></i>
+              <h3 style="margin-bottom: 10px;">Reforestación Amazonas</h3>
+              <p>250 hectáreas restauradas con especies nativas. 125,000 árboles plantados que capturan 15,000 toneladas de CO₂ anuales.</p>
+            </div>
 
-          <div class="controls reveal">
-            <button class="filter-btn active" data-filter="all">Todos</button>
-            <button class="filter-btn" data-filter="selva">Selva</button>
-            <button class="filter-btn" data-filter="urbano">Urbano</button>
-            <button class="filter-btn" data-filter="costero">Costero</button>
-            <button class="filter-btn" data-filter="andino">Andino</button>
+            <div class="reveal" style="background: var(--card-bg); padding: 25px; border-radius: 12px; box-shadow: var(--shadow); text-align: center;">
+              <i class="fas fa-city" style="font-size: 3rem; color: var(--primary-green); margin-bottom: 15px;"></i>
+              <h3 style="margin-bottom: 10px;">Pulmón Urbano Santiago</h3>
+              <p>Micro-bosques en plazas urbanas que reducen temperatura 5°C y mejoran calidad del aire 40%.</p>
+            </div>
+
+            <div class="reveal" style="background: var(--card-bg); padding: 25px; border-radius: 12px; box-shadow: var(--shadow); text-align: center;">
+              <i class="fas fa-water" style="font-size: 3rem; color: var(--primary-green); margin-bottom: 15px;"></i>
+              <h3 style="margin-bottom: 10px;">Manglar Pacífico</h3>
+              <p>80 hectáreas de manglares restaurados que capturan 4x más carbono que bosques terrestres.</p>
+            </div>
           </div>
 
-          <div class="projects-grid" id="projects-container"></div>
+          <div class="reveal" style="text-align: center;">
+            <a href="projects.html" class="btn btn-primary">Ver Todos los Proyectos <i class="fas fa-arrow-right"></i></a>
+          </div>
         </div>
       </section>
 
-      <section id="involve" class="section involve-section">
-        <div class="container involve-grid">
-          <div class="involve-content reveal">
-            <h2>Involúcrate Hoy</h2>
-            <p>
-              Tu aporte hace la diferencia. Usa nuestra calculadora interactiva
-              para visualizar el impacto real de tu donación en el medio
-              ambiente.
+
+      <section id="involve-cta" class="section" style="background: linear-gradient(135deg, var(--primary-green), var(--secondary-green)); color: white;">
+        <div class="container" style="text-align: center; max-width: 800px; margin: 0 auto;">
+          <div class="reveal">
+            <i class="fas fa-hands-helping" style="font-size: 4rem; margin-bottom: 20px; opacity: 0.9;"></i>
+            <h2 style="margin-bottom: 20px;">¿Quieres Hacer la Diferencia?</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 30px; line-height: 1.8;">
+              Usa nuestra Calculadora de Impacto para visualizar cuánto CO₂ capturarás y cuánta área reforestarás con tu donación.
             </p>
-
-            <div style="display: flex; gap: 15px; align-items: center">
-              <i
-                class="fas fa-heart"
-                style="font-size: 2rem; color: var(--secondary-green)"
-              ></i>
-              <div>
-                <h4>Dona árboles</h4>
-                <small>Cada aporte cuenta.</small>
-              </div>
-            </div>
-          </div>
-
-          <div class="calculator-card reveal">
-            <div class="calc-header">
-              <i
-                class="fas fa-calculator"
-                style="color: var(--primary-green)"
-              ></i>
-              <h3>Calculadora de Impacto</h3>
-            </div>
-
-            <p>¿Cuántos árboles quieres plantar?</p>
-
-            <div class="range-container">
-              <div class="slider-label">
-                <span>1</span>
-                <span
-                  id="slider-val-display"
-                  style="
-                    font-size: 1.2rem;
-                    color: var(--primary-green);
-                    font-weight: 700;
-                  "
-                  >10</span
-                >
-                <span>100</span>
-              </div>
-              <input
-                type="range"
-                id="tree-slider"
-                min="1"
-                max="100"
-                value="10"
-                aria-label="Seleccionar cantidad de árboles"
-              />
-            </div>
-
-            <div class="results-grid">
-              <div class="result-box">
-                <span class="result-num" id="co2-result">210</span>
-                <span class="result-label">KG CO₂ Absorbido/Año</span>
-              </div>
-              <div class="result-box">
-                <span class="result-num" id="area-result">20</span>
-                <span class="result-label">m² Superficie Reforestada</span>
-              </div>
-            </div>
-
-            <div class="impact-msg" id="impact-message">
-              "Excelente aporte para tu comunidad"
-            </div>
-
-            <button
-              class="btn btn-primary"
-              style="width: 100%; margin-top: 20px"
-              id="btn-donar"
-            >
-              Donar Ahora
-            </button>
+            <a href="involve.html" class="btn" style="background: white; color: var(--primary-green); font-weight: 700; padding: 15px 40px;">
+              Calcular mi Impacto <i class="fas fa-calculator"></i>
+            </a>
           </div>
         </div>
       </section>
 
-      <section id="contact" class="section">
-        <div class="container">
-          <div class="section-header reveal">
-            <h2>Contáctanos</h2>
-            <p>¿Tienes preguntas? Estamos aquí para responderlas.</p>
-          </div>
 
-          <form class="contact-form reveal" id="contact-form" novalidate>
-            <div class="form-group">
-              <label for="name">Nombre</label>
-              <input
-                type="text"
-                id="name"
-                name="nombre"
-                class="form-control"
-                placeholder="Tu nombre"
-                required
-              />
-              <span class="error-msg"
-                >Por favor ingresa un nombre válido (min 3 letras).</span
-              >
-            </div>
-
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                class="form-control"
-                placeholder="tu@email.com"
-                required
-              />
-              <span class="error-msg">Ingresa un email válido.</span>
-            </div>
-
-            <div class="form-group">
-              <label for="message">Mensaje</label>
-              <textarea
-                id="message"
-                name="mensaje"
-                rows="5"
-                class="form-control"
-                placeholder="¿Cómo podemos ayudarte?"
-                required
-              ></textarea>
-              <span class="error-msg">El mensaje no puede estar vacío.</span>
-            </div>
-
-            <button type="submit" class="btn btn-primary" style="width: 100%">
-              <i class="far fa-paper-plane"></i> Enviar Mensaje
-            </button>
-          </form>
-        </div>
-      </section>
-
-      <section id="faq" class="section">
-        <div class="container">
-          <div class="section-header reveal">
-            <h2>Preguntas Frecuentes</h2>
-            <p>Resolvemos tus dudas sobre nuestro trabajo</p>
-          </div>
-
-          <div class="accordion reveal">
-            <div class="accordion-item">
-              <button class="accordion-header" aria-expanded="false">
-                <span>¿Cómo puedo donar árboles?</span>
-                <i class="fas fa-chevron-down"></i>
-              </button>
-              <div class="accordion-content">
-                <p>
-                  Puedes donar árboles usando nuestra calculadora de impacto en
-                  la sección "Involúcrate". Simplemente selecciona la cantidad
-                  de árboles que deseas plantar y haz clic en "Donar Ahora".
-                  Aceptamos pagos con tarjeta de crédito, débito y
-                  transferencias bancarias.
-                </p>
-              </div>
-            </div>
-
-            <div class="accordion-item">
-              <button class="accordion-header" aria-expanded="false">
-                <span>¿Dónde plantan los árboles?</span>
-                <i class="fas fa-chevron-down"></i>
-              </button>
-              <div class="accordion-content">
-                <p>
-                  Trabajamos en múltiples regiones de Latinoamérica incluyendo
-                  la Amazonía, zonas urbanas de Santiago y Ciudad de México,
-                  manglares del Pacífico, corredores biológicos del sur, y
-                  ecosistemas andinos de altura. Cada proyecto se enfoca en
-                  especies nativas adaptadas a su ecosistema específico.
-                </p>
-              </div>
-            </div>
-
-            <div class="accordion-item">
-              <button class="accordion-header" aria-expanded="false">
-                <span>¿Cómo garantizan la supervivencia de los árboles?</span>
-                <i class="fas fa-chevron-down"></i>
-              </button>
-              <div class="accordion-content">
-                <p>
-                  Implementamos prácticas de reforestación profesional:
-                  producimos plantines en viveros comunitarios, utilizamos
-                  especies nativas, protegemos contra ganado, damos
-                  mantenimiento durante 2-3 años, y realizamos monitoreos
-                  periódicos. Nuestra tasa promedio de supervivencia es del 78%.
-                </p>
-              </div>
-            </div>
-
-            <div class="accordion-item">
-              <button class="accordion-header" aria-expanded="false">
-                <span>¿Puedo visitar los proyectos?</span>
-                <i class="fas fa-chevron-down"></i>
-              </button>
-              <div class="accordion-content">
-                <p>
-                  ¡Por supuesto! Organizamos jornadas de voluntariado mensuales
-                  donde puedes participar en plantaciones y conocer nuestros
-                  proyectos de primera mano. También ofrecemos tours educativos
-                  para grupos escolares y empresariales. Contáctanos para
-                  coordinar tu visita.
-                </p>
-              </div>
-            </div>
-
-            <div class="accordion-item">
-              <button class="accordion-header" aria-expanded="false">
-                <span>¿Cómo miden el impacto ambiental?</span>
-                <i class="fas fa-chevron-down"></i>
-              </button>
-              <div class="accordion-content">
-                <p>
-                  Utilizamos metodologías científicas validadas
-                  internacionalmente. Monitoreamos captura de CO₂, recuperación
-                  de biodiversidad con cámaras trampa, calidad de agua y suelo,
-                  y beneficios socioeconómicos para comunidades locales.
-                  Publicamos informes de impacto anuales con datos verificados.
-                </p>
-              </div>
-            </div>
-
-            <div class="accordion-item">
-              <button class="accordion-header" aria-expanded="false">
-                <span>¿Las donaciones son deducibles de impuestos?</span>
-                <i class="fas fa-chevron-down"></i>
-              </button>
-              <div class="accordion-content">
-                <p>
-                  Sí, EcoFuturo es una organización sin fines de lucro
-                  certificada. Todas las donaciones son deducibles de impuestos
-                  según la legislación de cada país. Emitimos certificados
-                  oficiales de donación que puedes usar en tu declaración anual
-                  de impuestos.
-                </p>
-              </div>
-            </div>
+      <section id="contact-cta" class="section" style="background: var(--bg-secondary);">
+        <div class="container" style="text-align: center; max-width: 800px; margin: 0 auto;">
+          <div class="reveal">
+            <i class="fas fa-envelope" style="font-size: 4rem; color: var(--primary-green); margin-bottom: 20px;"></i>
+            <h2 style="margin-bottom: 20px;">¿Tienes Preguntas?</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 30px; line-height: 1.8;">
+              Estamos aquí para ayudarte. Envíanos un mensaje o consulta nuestras preguntas frecuentes.
+            </p>
+            <a href="contact.html" class="btn btn-primary">
+              Contáctanos <i class="fas fa-arrow-right"></i>
+            </a>
           </div>
         </div>
       </section>
@@ -434,7 +229,6 @@
       <div id="lightbox-counter"></div>
     </div>
 
-    <!-- Newsletter Popup -->
     <div id="newsletter-modal" class="newsletter-modal">
       <div class="newsletter-content">
         <button class="newsletter-close" aria-label="Cerrar">&times;</button>
